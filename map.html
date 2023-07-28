@@ -1,0 +1,22 @@
+<html>
+<head><title>map</title></head>
+
+<body onclick="getcoord(event)">
+<img src="map.png" usemap="#foodmap"></img>
+
+
+<div id="demo"></div>
+<map name="foodmap">
+  <area shape="poly" coords="374,693,286,741,303,813,356,749,373,697" alt="tn" href="tn.html">
+  <area shape="poly" coords="368,677,332,691,296,641,323,532,391,570,468,549,368,624,357,681" alt="new" href="ap.html">
+<area shape="poly" coords="235,706,279,761,288,820,265,760,238,709" alt="tn" href="ke.html">
+<area shape="poly" coords="223,642,293,567,278,660,296,718,238,688,225,630" alt="tn" href="ka.html">
+<area shape="poly" coords="235,706,279,761,288,820,265,760,238,709" alt="tn" href="goa.html">
+</map>
+<script>
+function getcoord(event) {
+  document.getElementById("demo").innerHTML = event.clientX + "," + event.clientY;
+}
+</script>
+</body>
+</html>
