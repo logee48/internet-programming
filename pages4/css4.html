@@ -17,14 +17,62 @@
 <div style="height:75vh;display:flex;">
 	<div style="background-color:grey">
 	<div style="width:280px;padding:10px;"><b>CSE</b></div>
-	<a href="intro.html"><div style="padding:10px;">Introduction</div></a>
-	<a href="opp.html"><div style="padding:10px">Opportunities</div></a>
-	<a href="fact.html"><div style="padding:10px">Faculty Memeber</div></a>
-	<a href="lab.html"><div style="padding:10px">Lab Facuility</div></a>
-	<a href="news.html"><div style="padding:10px">News</div></a>
+	<div style="padding:10px;" onclick="intro1()"><span id="one">Introduction</span></div>
+	<div style="padding:10px" onclick="opp1()"><span id="two">Opportunities</span></div>
+	<div style="padding:10px" onclick="fact1()"><span id="three">Faculty Memeber</span></div>
+	<div style="padding:10px" onclick="lab1()"><span id="four">Lab Facuility</span></div>
+	<div style="padding:10px" onclick="news1()"><span id="five">News</span></div>
 	</div>
-<div style="padding:20px;font-size:20px">Welcome to the Department of CSE - Home Page</div>
+	<div id="new" style="padding:20px;font-size:20px">Welcome to the Department of CSE - Home Page</div>
+	<iframe id="myframe" width="800px" style="border:none;" src=""></iframe>
 </div>
 
+<script>
+	function intro1() {
+	  document.getElementById("myframe").src = "intro.html";
+	  document.getElementById("new").style = 'display:none';
+	  document.getElementById("one").style = 'background-color:white';
+	  document.getElementById("two").style = 'background-color:none';
+	  document.getElementById("three").style = 'background-color:none';
+	  document.getElementById("four").style = 'background-color:none';
+	  document.getElementById("five").style = 'background-color:none';
+	}
+	function opp1() {
+	  document.getElementById("myframe").src = "opp.html";
+	  document.getElementById("new").style = 'display:none';
+	  document.getElementById("one").style = 'background-color:none';
+	  document.getElementById("two").style = 'background-color:white';
+	  document.getElementById("three").style = 'background-color:none';
+	  document.getElementById("four").style = 'background-color:none';
+	  document.getElementById("five").style = 'background-color:none';
+	}
+	function fact1() {
+	  document.getElementById("myframe").src = "fact.html";
+	  document.getElementById("new").style = 'display:none';
+	  document.getElementById("one").style = 'background-color:none';
+	  document.getElementById("two").style = 'background-color:none';
+	  document.getElementById("three").style = 'background-color:white';
+	  document.getElementById("four").style = 'background-color:none';
+	  document.getElementById("five").style = 'background-color:none';
+	}
+	function lab1() {
+	  document.getElementById("myframe").src = "lab.html";
+	  document.getElementById("new").style = 'display:none';
+	  document.getElementById("one").style = 'background-color:none';
+	  document.getElementById("two").style = 'background-color:none';
+	  document.getElementById("three").style = 'background-color:none';
+	  document.getElementById("four").style = 'background-color:white';
+	  document.getElementById("five").style = 'background-color:none';
+	}
+	function news1() {
+	  document.getElementById("myframe").src = "news.html";
+	  document.getElementById("new").style = 'display:none';
+	  document.getElementById("one").style = 'background-color:none';
+	  document.getElementById("two").style = 'background-color:none';
+	  document.getElementById("three").style = 'background-color:none';
+	  document.getElementById("four").style = 'background-color:none';
+	  document.getElementById("five").style = 'background-color:white';
+	}
+	</script>
 </body>
 </html>
