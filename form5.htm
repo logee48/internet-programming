@@ -7,7 +7,8 @@
   line-height: 30px;
   color: #777;
   background: #4CAF50;
-  overflow: hidden;
+  max-height: 80vh;
+  /* overflow: hidden; */
 }
 
 .container {
@@ -84,6 +85,7 @@ fieldset {
 }
     </style>
     <body>
+        <button onclick="test()">test</button>
         <div class="container" style="position: relative;top: -100px;">  
             <form id="contact" action="#" method="post">
               <h3>Form Validation</h3>
@@ -127,6 +129,21 @@ fieldset {
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
               </fieldset>
             </form>
+            
           </div>
+    <script>
+        function test()
+        {
+            var myform = document.getElementById("contact")
+            // console.log(myform[0].checkValidity());
+            console.log(myform[2].reportValidity());
+            try{
+                console.log(myform[0].value)
+            }
+            catch(err){
+                console.log(err)
+            }
+        }
+    </script>
     </body>
 </html>
