@@ -1,0 +1,132 @@
+<html>
+    <style>
+        body {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 30px;
+  color: #777;
+  background: #4CAF50;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+#contact {
+  background: #F9F9F9;
+  padding: 15px;
+  margin: 150px 0;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#contact h3 {
+  display: block;
+  font-size: 25px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+#contact h4 {
+  margin: 5px;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0 0 5px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="tel"],
+#contact input[type="url"],
+#contact textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+#contact textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}
+
+#contact button[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.copyright {
+  text-align: center;
+}
+
+::-moz-placeholder {
+  color: #888;
+}
+    </style>
+    <body>
+        <div class="container" style="position: relative;top: -100px;">  
+            <form id="contact" action="#" method="post">
+              <h3>Form Validation</h3>
+              <fieldset>
+                <input placeholder="Your name" type="text"  required autofocus>
+              </fieldset>
+              <fieldset>
+                <input placeholder="Your rollno" type="text"  required>
+              </fieldset>
+              <fieldset>
+                <input placeholder="section" type="text"  required>
+              </fieldset>
+              <fieldset>
+                <input placeholder="year" type="text"  required>
+              </fieldset>
+              <fieldset>
+                <input placeholder="Department" type="text"  required>
+              </fieldset>
+              <fieldset>
+                <input placeholder="your mobile number" type="tel"  required></input>
+              </fieldset>
+              <fieldset>
+                <input placeholder="your email" type="email"  required></input>
+              </fieldset>
+              <fieldset>
+                <textarea placeholder="your address"  required></textarea>
+              </fieldset>
+              <fieldset>
+                <input placeholder="City" type="text"  required></input>
+              </fieldset>
+              <fieldset>
+                <input placeholder="Country" type="text"  required></input>
+              </fieldset>
+              <fieldset>
+                <input placeholder="pincode" type="text"  required></input>
+              </fieldset>
+              <!-- <fieldset>
+                <input placeholder="pincode"  required></input>
+              </fieldset> -->
+              <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+              </fieldset>
+            </form>
+          </div>
+    </body>
+</html>
