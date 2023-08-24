@@ -39,7 +39,9 @@
   font-weight: 400;
 }
 
-fieldset {
+fieldset,
+option {
+  color: #777;
   border: medium none !important;
   margin: 0 0 5px;
   min-width: 100%;
@@ -51,7 +53,9 @@ fieldset {
 #contact input[type="email"],
 #contact input[type="tel"],
 #contact input[type="url"],
-#contact textarea {
+#contact textarea,
+#deptsel,
+#secsel {
   width: 100%;
   border: 1px solid #ccc;
   background: #FFF;
@@ -80,30 +84,47 @@ fieldset {
   text-align: center;
 }
 
-::-moz-placeholder {
-  color: #888;
-}
+/* ::-moz-placeholder {
+  color: red;
+} */
     </style>
     <body>
-        <button onclick="test()">test</button>
+        <button onclick="username()">test</button>
         <div class="container" style="position: relative;top: -100px;">  
             <form id="contact" action="#" method="post">
               <h3>Form Validation</h3>
               <fieldset>
-                <input placeholder="Your name" type="text"  required autofocus>
+                <input id="uname" placeholder="Your name" type="text"  required autofocus>
               </fieldset>
+              <p style="margin: 0;" id="uname-error"></p>
               <fieldset>
-                <input placeholder="Your rollno" type="text"  required>
+                <input id="rollnoo" placeholder="Your rollno" type="text"  required>
               </fieldset>
-              <fieldset>
+              <p style="margin: 0;" id="rollno-error"></p>
+              <!-- <fieldset>
                 <input placeholder="section" type="text"  required>
-              </fieldset>
+              </fieldset> -->
+              <select id="secsel" name="cars" id="cars">
+                <option value="">section</option>
+                <option value="A">A</option>
+                <option value="b">B</option>
+                <option value="B">C</option>
+                <option value="C">D</option>
+              </select>
+              <p style="margin: 0;" id="section-error"></p>
               <fieldset>
                 <input placeholder="year" type="text"  required>
               </fieldset>
               <fieldset>
                 <input placeholder="Department" type="text"  required>
               </fieldset>
+              <select id="deptsel" name="cars" id="cars">
+                <option value="" selected>Department</option>
+                <option value="CSE">CSE</option>
+                <option value="saab">ECE</option>
+                <option value="opel">MECH</option>
+                <option value="audi">CIVIL</option>
+              </select>
               <fieldset>
                 <input placeholder="your mobile number" type="tel"  required></input>
               </fieldset>
@@ -143,6 +164,55 @@ fieldset {
             catch(err){
                 console.log(err)
             }
+        }
+
+        function username()
+        {
+          // username check
+          var name = document.getElementById("uname");
+          if (name.value.length < 10)
+          {
+            name.style.border = "1px solid red";
+            document.getElementById("uname-error").innerHTML = "enter name greater than 10 char"
+          }
+          else{
+            name.style.borderColor = "rbg(161,161,161)";
+            document.getElementById("uname-error").innerHTML = "";
+          }
+
+          //rollno check
+          var name = document.getElementById("rollnoo");
+          if (name.value.length != 6)
+          {
+            name.style.border = "1px solid red";
+            document.getElementById("rollno-error").innerHTML = "enter valid rollno"
+          }
+          else{
+            name.style.borderColor = "rbg(161,161,161)";
+            document.getElementById("rollno-error").innerHTML = "";
+          }
+
+          //section check
+          var name = document.getElementById("secsel");
+          if (name.value.length == "")
+          {
+            name.style.border = "1px solid red";
+            document.getElementById("section-error").innerHTML = "select section"
+          }
+          else{
+            name.style.borderColor = "rbg(161,161,161)";
+            document.getElementById("section-error").innerHTML = "";
+          }
+          
+          // name.style.border = "2px solid red;"
+          // if (name.value.length<10){
+          //   document.getElementById("uname-error").innerHTML += "enter name longer than 10 char";
+          //   name.style = "border:1px solid red"
+          // }
+          // else
+          // {
+          //   document.getElementById("uname-error").innerHTML += "enter name longer than 10 char";
+          // }
         }
     </script>
     </body>
