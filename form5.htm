@@ -89,18 +89,18 @@ option {
 } */
     </style>
     <body>
-        <button onclick="username()">test</button>
+        <!-- <button onclick="username()">test</button> -->
         <div class="container" style="position: relative;top: -100px;">  
             <form id="contact" action="#" method="post">
               <h3>Form Validation</h3>
               <fieldset>
-                <input id="uname" placeholder="Your name" type="text"  required autofocus>
+                <input id="uname" placeholder="Your name" type="text" required autofocus>
               </fieldset>
               <p style="margin: 0;" id="uname-error"></p>
               <fieldset>
-                <input id="rollnoo" placeholder="Your rollno" type="text"  required>
+                <input id="rollnoo" placeholder="Your rollno" type="text" style="border: solid 2px red;" required>
               </fieldset>
-              <p style="margin: 0;" id="rollno-error"></p>
+              <p style="margin: 0;" id="rollno-error">enter valid rollno**</p>
               <!-- <fieldset>
                 <input placeholder="section" type="text"  required>
               </fieldset> -->
@@ -115,22 +115,24 @@ option {
               <fieldset>
                 <input placeholder="year" type="text"  required>
               </fieldset>
-              <fieldset>
+              <!-- <fieldset>
                 <input placeholder="Department" type="text"  required>
-              </fieldset>
-              <select id="deptsel" name="cars" id="cars">
+              </fieldset> -->
+              <select id="deptsel" name="cars" id="cars" style="border: solid 2px red;">
                 <option value="" selected>Department</option>
                 <option value="CSE">CSE</option>
                 <option value="saab">ECE</option>
                 <option value="opel">MECH</option>
                 <option value="audi">CIVIL</option>
               </select>
+              <p style="margin: 0;" id="section-error">select your Department**</p>
               <fieldset>
                 <input placeholder="your mobile number" type="tel"  required></input>
               </fieldset>
               <fieldset>
-                <input placeholder="your email" type="email"  required></input>
+                <input placeholder="your email" type="email" style="border: solid 2px red;" required></input>
               </fieldset>
+              <p style="margin: 0;" id="section-error">enter valid email_id**</p>
               <fieldset>
                 <textarea placeholder="your address"  required></textarea>
               </fieldset>
