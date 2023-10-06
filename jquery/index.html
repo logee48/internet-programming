@@ -8,7 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     function randnum(){
-        var num = Math.floor(Math.random() * 90) + 65;
+        var num = Math.floor(Math.random() * (90-65)+1) + 65;
         var charr = String.fromCharCode(num);
         return charr
     }
@@ -22,7 +22,7 @@
         'border-radius':'50%',
         'text-align':'center',
         'position':'relative',
-        'top':'50px'
+        'top':'-50px'
     });
     
     var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
@@ -34,13 +34,27 @@
         'top':posy+'px',
         'display':'none'
     }).appendTo( 'body' ).fadeIn(500).delay(10000,function(){
+        $(document).keypress(function(event){
+        var k_code = (event.keyCode ? event.keyCode : event.which);
+        console.log(String.fromCharCode(k_code),$newdiv.text());
+        if(($newdiv).text() == String.fromCharCode(k_code)){
+            $newdiv.remove();
+        }
+    });
        makeDiv(); 
     });
-    $(document).ready(function(){
-    $($newdiv).click(function(){
-        $(this).hide();
-    });
-    });
+    $('#neww').ready(function(){
+        $(document).keypress(function(event){
+        var k_code = (event.keyCode ? event.keyCode : event.which);
+        if($(this).text().localeCompare(String.fromCharCode(k_code))>=0){
+            $(this).remove();
+            console.log("WORKS");
+        }
+        });
+    })
+    setInterval(console.log(document.getElementById("neww")),1000);
+
+    
 }
 </script>
 <body>
