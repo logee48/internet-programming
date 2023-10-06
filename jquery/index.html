@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>j-game</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    function randnum(){
+        var num = Math.floor(Math.random() * 90) + 65;
+        var charr = String.fromCharCode(num);
+        return charr
+    }
+    function makeDiv(){
+    var divsize = ((Math.random()*100) + 50).toFixed();
+    var color = '#'+ Math.round(0xffffff * Math.random()).toString(16);
+    $newdiv = $(`<div id="neww">${randnum()}</div>`).css({
+        'width':'50px',
+        'height':'50px',
+        'background-color': color,
+        'border-radius':'50%',
+        'text-align':'center',
+        'position':'relative',
+        'top':'50px'
+    });
+    
+    var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
+    var posy = (Math.random() * ($(document).height() - divsize)).toFixed();
+    
+    $newdiv.css({
+        'position':'absolute',
+        'left':posx+'px',
+        'top':posy+'px',
+        'display':'none'
+    }).appendTo( 'body' ).fadeIn(500).delay(10000,function(){
+       makeDiv(); 
+    });
+    $(document).ready(function(){
+    $($newdiv).click(function(){
+        $(this).hide();
+    });
+    });
+}
+</script>
+<body>
+    <div id="score">0</div>
+    <div style="text-align: center;"><button onclick="makeDiv()">start</button></div>
+</body>
+</html>

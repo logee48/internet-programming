@@ -1,0 +1,93 @@
+<html>  
+  
+<head>
+    <style>  
+  
+* {  
+    box-sizing: border-box;  
+}  
+body {  
+    padding: 0;
+    margin: 0;
+        font-family: Arial, sans-serif;  
+        height: 100%;  
+        overflow: hidden;
+}  
+  
+.background-img {  
+    min-height: 100vh; 
+    width: 100vw;
+    background-image: url(  
+"https://www.hlmlawfirm.com/wp-content/uploads/2020/10/Common-Causes-of-Airplane-Engine-Failure.jpeg");  
+} 
+div{
+    /* background-color: white; */
+}
+    </style>  
+</head>  
+  
+<body>  
+    <div class="background-img">  
+        <h1 style="text-align: center;">Estimate the propulsion and thermal efficiencies of a turbojet engine</h1>  
+        <form style="padding: 30px;">
+            <div>Mach Number :</div>
+            <input id="M" type="text">
+            <div style="padding-top: 5px;">Ambient temperature :</div>
+            <input id="ta" type="text">
+            <div style="padding-top: 5px;">Compressor pressure ratio :</div>
+            <input id="cpr" type="text"> 
+            <div style="padding-top: 5px;">Turbine inlet temperature :</div>
+            <input id="ti" type="text">
+            <div style="padding-top: 5px;">Adiabatic efficiencies of diffuser :</div>
+            <input id="de" type="text">
+            <div style="padding-top: 5px;">Adiabatic efficiencies of compressor :</div>
+            <input id="ce" type="text">
+            <div style="padding-top: 5px;">Adiabatic efficiencies of turbine :</div>
+            <input id="te" type="text">
+            <div style="padding-top: 5px;">Adiabatic efficiencies of nozzle :</div>
+            <input id="ne" type="text">
+            <div style="padding-top: 5px;">Burner stagnation pressure ratio :</div>
+            <input id="bspr" type="text">
+            <div style="padding-top: 5px;">Average specific heat during and after combustion  :</div>
+            <input id="shc" type="text">
+            <div style="padding-top: 5px;">Average molecular weight :</div>
+            <input id="amw" type="text">
+            
+            <div style="padding-top: 10px;"><button type="button" onclick="fn1()">Calculate</button></div>
+            <div style="padding-top: 10px;font-size: 25px;">Result :</div>
+            <div id="tee"></div>
+            <div id="pee"></div>
+        </form>  
+
+        
+</div>
+<script>
+    function fn1(){
+        var M = parseFloat(document.getElementById("M").value);
+        var ta = parseInt(document.getElementById("ta").value);
+        var cpr = parseInt(document.getElementById("cpr").value);
+        var ti = parseInt(document.getElementById("ti").value);
+        var de = parseFloat(document.getElementById("de").value);
+        var ce = parseFloat(document.getElementById("ce").value);
+        var te = parseFloat(document.getElementById("te").value);
+        var ne = parseFloat(document.getElementById("ne").value);
+        var bspr = parseFloat(document.getElementById("bspr").value);
+        var shc = parseFloat(document.getElementById("shc").value);
+        var amw = parseInt(document.getElementById("amw").value);
+        var air_speed = M * ((1.4 * 287 * ta) ** 0.5);
+        var diffuser_exit_temperature = ta + (air_speed ** 2) / (2 * 1005);
+        var compressor_exit_temperature = diffuser_exit_temperature + ((cpr ** ((1 - 1 / ce))) - 1) * (ti - diffuser_exit_temperature);
+        var turbine_exit_temperature = ti - ((ti - compressor_exit_temperature) / te);
+        var nozzle_exit_temperature = turbine_exit_temperature - (turbine_exit_temperature / te);
+        var thermal_efficiency = (((1 + bspr * de * ce * te * ne) * ti) - ta) / ((shc * 1000) * (ti - diffuser_exit_temperature));
+        var propulsion_efficiency = (2 * air_speed / (M + 1)) * ((1 - (ta / nozzle_exit_temperature)) ** 0.5);
+        console.log(thermal_efficiency,propulsion_efficiency);
+        document.getElementById("tee").innerHTML = "Thermal Efficiency : "+thermal_efficiency;
+        document.getElementById("pee").innerHTML = "Propulsion Efficiency : "+propulsion_efficiency;
+        // console.log(M);
+    }
+</script>
+</body>  
+  
+  
+</html>
