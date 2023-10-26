@@ -1,64 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>j-game</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubble Game</title>
+<link href="10exip.css" rel="stylesheet" type="text/css">
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    function randnum(){
-        var num = Math.floor(Math.random() * (90-65)+1) + 65;
-        var charr = String.fromCharCode(num);
-        return charr
-    }
-    function makeDiv(){
-    var divsize = ((Math.random()*100) + 50).toFixed();
-    var color = '#'+ Math.round(0xffffff * Math.random()).toString(16);
-    $newdiv = $(`<div id="neww">${randnum()}</div>`).css({
-        'width':'50px',
-        'height':'50px',
-        'background-color': color,
-        'border-radius':'50%',
-        'text-align':'center',
-        'position':'relative',
-        'top':'-50px'
-    });
-    
-    var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
-    var posy = (Math.random() * ($(document).height() - divsize)).toFixed();
-    
-    $newdiv.css({
-        'position':'absolute',
-        'left':posx+'px',
-        'top':posy+'px',
-        'display':'none'
-    }).appendTo( 'body' ).fadeIn(500).delay(10000,function(){
-        $(document).keypress(function(event){
-        var k_code = (event.keyCode ? event.keyCode : event.which);
-        console.log(String.fromCharCode(k_code),$newdiv.text());
-        if(($newdiv).text() == String.fromCharCode(k_code)){
-            $newdiv.remove();
-        }
-    });
-       makeDiv(); 
-    });
-    $('#neww').ready(function(){
-        $(document).keypress(function(event){
-        var k_code = (event.keyCode ? event.keyCode : event.which);
-        if($(this).text().localeCompare(String.fromCharCode(k_code))>=0){
-            $(this).remove();
-            console.log("WORKS");
-        }
-        });
-    })
-    setInterval(console.log(document.getElementById("neww")),1000);
-
-    
-}
-</script>
 <body>
-    <div id="score">0</div>
-    <div style="text-align: center;"><button onclick="makeDiv()">start</button></div>
+<div id="score">0</div>
+<div id="timer">30</div>
+<div id="start">Start</div>
+<script type="text/javascript"
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+var width = screen.width - 100;
+var height = screen.height - 200;
+var code = 0;
+var timer = 30; // Initial timer value in seconds
+$('#start').css({
+"top": (height / 2) + 'px',
+"left": (width / 2) + 'px'
+});
+$('#start').click(function () {
+$(this).fadeOut('slow');
+$('#score').show();
+$('#timer').show();
+startGame();
+});
+function startGame() {
+setInterval(function () {
+if (timer > 0) {
+timer--;
+$('#timer').html(timer);
+} else {
+alert('Game Over! Your score is ' + code);
+resetGame();
+}
+}, 1000);
+genLetter();
+}
+$(document).keydown(function (event) {
+var keycode = event.keyCode;
+$('.bubb' + keycode).animate({
+"top": height + "px", "opacity": 0
+}, 'slow');
+$('.bubb' + keycode).fadeOut('slow').hide('slow', function () {
+code += 20;
+$('#score').html(code);
+$(this).remove();
+});
+});
+function genLetter() {
+var color = randomColor();
+var k = Math.floor(Math.random() * (90 - 65 + 1)) + 65;
+var ch = String.fromCharCode(k);
+var top = Math.floor(Math.random() * height);
+var left = Math.floor(Math.random() * width);
+var bubble = $('<span class="bubb bubb' + k + '" style="left: ' + left + 'px; top: ' +
+top + 'px; background-color:' + color + '">' + ch + '</span>');
+$('body').append(bubble);
+setTimeout(function () {
+if (timer!=0){
+genLetter();
+}
+}, 1000);
+}
+function randomColor() {
+var color = '';
+var values = ['a', 'b', 'c', 'd', 'e', 'f', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+for (c = 0; c < 6; c++) {
+no = Math.floor(Math.random() * 15);
+color += values[no];
+}
+return '#' + color;
+}
+function resetGame() {
+code = 0;
+timer = 30;
+$('.bubb').remove();
+$('#start').fadeIn('slow');
+$('#score').hide();
+$('#timer').hide();
+}
+});
+</script>
 </body>
 </html>
